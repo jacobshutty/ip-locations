@@ -1,0 +1,14 @@
+services:
+  web:
+    image: ip-locations
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./index.js:/usr/src/index.js
+      - ./client/index.html:/usr/src/client/index.html
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV='development'
+    command: 'npm run nodemon'

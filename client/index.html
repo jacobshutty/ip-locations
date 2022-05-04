@@ -1,0 +1,43 @@
+<head>
+  <style>
+    .content-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrap">
+    <h1>IP Addresss Search</h1>
+    <form id="ip-form">
+      <label for="ip">IP Address:</label>
+      <input type="text" id="ip" />
+      <button type="submit">Search</button>
+    </form>
+    <div id="ip-info"></div>
+  </div>
+</body>
+
+<script>
+  const form = document.querySelector('#ip-form');
+  form.addEventListener('submit', handleSearch);
+
+  async function handleSearch(e) {
+    e.preventDefault();
+
+    const ip = document.querySelector('#ip').value;
+
+    const data = await fetch(`/search?ip=${ip}`).then((data) => data.json());
+    const ipInfo = document.querySelector('#ip-info');
+    if (data.latitude && data.longitude) {
+      ipInfo.innerHTML = `Latitude: ${data.latitude}˚ Longitude: ${data.longitude}˚`;
+    } else {
+      ipInfo.innerHTML = 'Invalid IP';
+    }
+  }
+</script>

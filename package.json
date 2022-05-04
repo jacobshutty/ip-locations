@@ -1,0 +1,28 @@
+{
+  "name": "ip-locations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "nodemon": "nodemon index.js",
+    "node": "node index.js",
+    "start": "docker compose up --build",
+    "build": "docker build -t ip-locations .",
+    "prod": "docker run --name prod-ip-locations -p 3000:3000 -e NODE_ENV=production --rm -d ip-locations",
+    "stop": "docker stop prod-ip-locations"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@maxmind/geoip2-node": "^3.4.0",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2"
+  }
+}
