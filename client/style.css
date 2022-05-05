@@ -1,0 +1,84 @@
+html {
+  background-color: #131416;
+  font-family: Roboto;
+  color: #fff;
+}
+
+h1 {
+  margin-top: 0px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  padding: 6px 16px;
+  border-radius: 4px;
+  color: #131416;
+  background-color: rgb(144, 202, 249);
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px,
+    rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+}
+
+.content-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-wrap {
+  display: flex;
+  flex-direction: column;
+  background-color: #32383b;
+  padding: 25px 30px;
+  border-radius: 5px;
+  width: 350px;
+}
+
+.input-wrap {
+  display: flex;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.separator {
+  width: calc(100% + 58px);
+  margin-left: -30px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.ip-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+#ip-form {
+  margin-bottom: 0px;
+}
+
+#ip {
+  flex-grow: 1;
+  margin-right: 5px;
+}
+
+#random-ip {
+  width: 100%;
+}

@@ -1,52 +1,14 @@
 <html>
   <head>
+    <title>IP Address Search</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Karla:wght@400;700&family=Lora:wght@400;700&family=Roboto:wght@100&family=Source+Sans+Pro:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <title>IP Address Search</title>
-    <style>
-      html {
-        background-color: #121212;
-        font-family: Roboto;
-        color: #fff;
-      }
-
-      h1 {
-        margin-top: 0px;
-      }
-
-      .content-wrap {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .inner-wrap {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .input-wrap {
-        display: flex;
-        width: 100%;
-        margin-top: 5px;
-      }
-
-      #ip {
-        flex-grow: 1;
-        margin-right: 5px;
-      }
-
-      #random-ip {
-        margin-top: 10px;
-        width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="script.js"></script>
   </head>
 
   <body>
@@ -57,50 +19,17 @@
           <label for="ip">IP Address:</label>
           <br />
           <div class="input-wrap">
-            <input type="text" id="ip" />
+            <input type="text" id="ip" name="ip" required />
             <button type="submit">Search</button>
           </div>
-          <button id="random-ip">Search Random IP</button>
+          <div class="ip-info">
+            <span id="lat"></span>
+            <span id="long"></span>
+          </div>
+          <hr class="separator" />
+          <button id="random-ip" type="submit">Search Random IP</button>
         </form>
-        <div id="ip-info"></div>
       </div>
     </div>
   </body>
-
-  <script>
-    const sampleIps = [
-      '76.80.158.104',
-      '173.181.16.0',
-      '196.1.56.0',
-      '103.130.232.0',
-      '74.142.90.148',
-      '66.26.105.168',
-      '36.225.44.0',
-      '2.8.100.0',
-    ];
-    const form = document.querySelector('#ip-form');
-    form.addEventListener('submit', handleSearch);
-
-    const randomIpButton = document.querySelector('#random-ip');
-    randomIpButton.addEventListener('click', searchRandomIp);
-
-    async function handleSearch(e) {
-      e.preventDefault();
-
-      const ip = document.querySelector('#ip').value;
-
-      const data = await fetch(`/search?ip=${ip}`).then((data) => data.json());
-      const ipInfo = document.querySelector('#ip-info');
-      if (data.latitude && data.longitude) {
-        ipInfo.innerHTML = `Latitude: ${data.latitude}˚ Longitude: ${data.longitude}˚`;
-      } else {
-        ipInfo.innerHTML = 'Invalid IP';
-      }
-    }
-
-    function searchRandomIp() {
-      const ip = sampleIps[Math.floor(Math.random() * (sampleIps.length - 1))];
-      const ipInput = (document.querySelector('#ip').value = ip);
-    }
-  </script>
 </html>

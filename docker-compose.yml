@@ -6,7 +6,8 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./index.js:/usr/src/index.js
-      - ./client/index.html:/usr/src/client/index.html
+      - ./server:/usr/src/server
+      - ./client:/usr/src/client
     ports:
       - '3000:3000'
     environment:
